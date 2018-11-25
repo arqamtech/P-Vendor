@@ -2,14 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { DashboardPage } from '../pages/Extra/dashboard/dashboard';
-import { LoginPage } from '../pages/Extra/login/login';
 import * as firebase from 'firebase';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { SignUpPage } from '../pages/Extra/sign-up/sign-up';
 import { ProfilePage } from '../pages/MainPages/profile/profile';
+import { DashboardPage } from '../pages/MainPages/dashboard/dashboard';
+import { LoginPage } from '../pages/Auth/login/login';
+import { SignUpPage } from '../pages/Auth/sign-up/sign-up';
+import { SalesPage } from '../pages/MainPages/sales/sales';
+import { InventoryPage } from '../pages/MainPages/inventory/inventory';
+import { AddCategoriesPage } from '../pages/Inventory/add-categories/add-categories';
+import { CategoriesPage } from '../pages/Inventory/categories/categories';
+import { AddProductPage } from '../pages/Inventory/add-product/add-product';
+import { ChangePassPage } from '../pages/Extra/change-pass/change-pass';
 
 
 
@@ -33,6 +39,12 @@ firebase.initializeApp(firebaseCred);
     LoginPage,
     SignUpPage,
     ProfilePage,
+    SalesPage,
+    InventoryPage,
+    AddCategoriesPage,
+    CategoriesPage,
+    AddProductPage,
+    ChangePassPage,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +60,12 @@ firebase.initializeApp(firebaseCred);
     LoginPage,
     SignUpPage,
     ProfilePage,
+    SalesPage,
+    InventoryPage,
+    AddCategoriesPage,
+    CategoriesPage,
+    AddProductPage,
+    ChangePassPage,
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler }

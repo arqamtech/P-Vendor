@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController, MenuController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import * as firebase from 'firebase';
-import { DashboardPage } from '../dashboard/dashboard';
 import moment from 'moment';
+import { DashboardPage } from '../../MainPages/dashboard/dashboard';
 
 
 

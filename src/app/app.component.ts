@@ -2,17 +2,18 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, ToastController } from 'ionic-angular';
 
 import * as firebase from 'firebase';
-import { LoginPage } from '../pages/Extra/login/login';
-import { DashboardPage } from '../pages/Extra/dashboard/dashboard';
-import { SignUpPage } from '../pages/Extra/sign-up/sign-up';
 import { ProfilePage } from '../pages/MainPages/profile/profile';
+import { LoginPage } from '../pages/Auth/login/login';
+import { DashboardPage } from '../pages/MainPages/dashboard/dashboard';
+import { SalesPage } from '../pages/MainPages/sales/sales';
+import { InventoryPage } from '../pages/MainPages/inventory/inventory';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = SignUpPage;
+  rootPage: any = LoginPage;
   activePage: any;
 
   full: boolean = true;
@@ -26,12 +27,14 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { title: 'DashBoard', component: DashboardPage, icon: "flash", color: "yellowi" },
+      { title: 'DashBoard', component: DashboardPage, icon: "ios-analytics", color: "whiter" },
+      { title: 'Sales', component: SalesPage, icon: "ios-cash", color: "whiter" },
+      { title: 'Inventory', component: InventoryPage, icon: "logo-buffer", color: "whiter" },
       { title: 'Profile', component: ProfilePage, icon: "ios-person", color: "whiter" },
 
 
     ];
-    this.activePage = this.pages[0];
+    this.activePage = this.pages[2];
 
   }
 

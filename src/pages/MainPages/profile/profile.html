@@ -7,13 +7,51 @@
 </ion-header>
 
 <ion-content padding>
-<ion-item no-lines class="content">
-<h1 class="title">Profile</h1>
-</ion-item>
+  <ion-item no-lines class="content">
+    <h1 class="title">Profile</h1>
+  </ion-item>
 
+  <ion-card>
+    <ion-card-content>
 
+      <ion-item>
+        <h3 ion-text color="primary" item-start>Store Name</h3>
+        <h3 item-end>{{StoreName}}</h3>
+      </ion-item>
 
+      <ion-item>
+        <h3 ion-text color="primary" item-start>Owner Name</h3>
+        <h3 item-end>{{OwnerName}}</h3>
+      </ion-item>
 
+      <ion-item>
+        <h3 ion-text color="primary" item-start>Phone Number</h3>
+        <h3 item-end>{{PhoneNumber}}</h3>
+      </ion-item>
+
+      <ion-item>
+        <h3 ion-text color="primary" item-start>Store Category</h3>
+        <h3 item-end>{{StoreCategory}}</h3>
+      </ion-item>
+
+      <ion-item>
+        <h3 ion-text color="primary" item-start>Store Location</h3>
+        <h3 item-end>{{StoreLocation}}</h3>
+      </ion-item>
+
+      <ion-item>
+        <h3 ion-text color="primary" item-start>Email</h3>
+        <h3 item-end>{{email}}</h3>
+      </ion-item>
+
+      <ion-item>
+        <h3 ion-text color="primary" item-start>Created Date</h3>
+        <h3 item-end>{{created | date : 'medium'}}</h3>
+      </ion-item>
+
+    
+    </ion-card-content>
+  </ion-card>
 
 
 

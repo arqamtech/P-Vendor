@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Add Category</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only clear (click)="close()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label floating>Category Name</ion-label>
+        <ion-input type="text" autofocus  (keyup.enter)="addCat()" [(ngModel)]="catName"></ion-input>
+      </ion-item>
+
+      <button ion-button float-right margin-top (click)="addCat()">Add Category</button>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>
