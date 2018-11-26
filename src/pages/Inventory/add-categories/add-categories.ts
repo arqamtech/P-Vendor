@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ToastController, ViewController } from 'ionic-angular';
 import * as firebase from 'firebase';
+import moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -33,7 +34,10 @@ export class AddCategoriesPage {
     });
     loading.present();
 
-    firebase.database().ref("Categories").push(this.catName).then((res)=>{
+    firebase.database().ref("Categories").push({
+      Name : this.catName,
+      TimeStamp : moment().format(),
+    }).then((res)=>{
       firebase.database().ref("Seller Data/Categories").child(firebase.auth().currentUser.uid).child(res.key).set(this.catName).then(()=>{
         this.close();
         this.presentToast("Category Added");
