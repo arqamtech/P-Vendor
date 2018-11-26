@@ -17,6 +17,22 @@ export class DashboardPage {
     private menuCtrl: MenuController,
   ) {
     this.menuCtrl.enable(true);
+    this.getUser();
   }
 
+
+
+
+  getUser(){
+    firebase.database().ref("Seller Data/Sellers").child(firebase.auth().currentUser.uid).once("value",itemSnap=>{
+      if(!itemSnap.val().Verified){
+        console.log("Not Verified");
+      }
+    })
+  }
+
+
+
+
 }
+

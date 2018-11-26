@@ -16,6 +16,7 @@ import { AddCategoriesPage } from '../pages/Inventory/add-categories/add-categor
 import { CategoriesPage } from '../pages/Inventory/categories/categories';
 import { AddProductPage } from '../pages/Inventory/add-product/add-product';
 import { ChangePassPage } from '../pages/Extra/change-pass/change-pass';
+import { NotVerifiedPage } from '../pages/Extra/not-verified/not-verified';
 
 
 
@@ -45,6 +46,7 @@ firebase.initializeApp(firebaseCred);
     CategoriesPage,
     AddProductPage,
     ChangePassPage,
+    NotVerifiedPage,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +68,7 @@ firebase.initializeApp(firebaseCred);
     CategoriesPage,
     AddProductPage,
     ChangePassPage,
+    NotVerifiedPage,
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler }
