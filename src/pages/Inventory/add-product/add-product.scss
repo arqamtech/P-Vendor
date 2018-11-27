@@ -2,6 +2,13 @@ page-add-product {
 ion-select,ion-input{
     border-bottom: 1px solid map-get($colors, primary);
 }
+.card{
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  width: 60%;
+}
 .selects {
     background-color: #209E91;
     margin-top: 3%;
@@ -35,5 +42,9 @@ ion-select,ion-input{
    .item:hover .editBtns {
     opacity: 1;
   }
-
+  .imgView{
+    align-self: center;
+    width: 40%;
+    height: auto;
+  }
 }

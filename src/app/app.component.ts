@@ -42,7 +42,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          this.rootPage = DashboardPage;
+          this.rootPage = InventoryPage;
         }
         else {
           this.rootPage = LoginPage;

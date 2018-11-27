@@ -17,6 +17,9 @@ import { CategoriesPage } from '../pages/Inventory/categories/categories';
 import { AddProductPage } from '../pages/Inventory/add-product/add-product';
 import { ChangePassPage } from '../pages/Extra/change-pass/change-pass';
 import { NotVerifiedPage } from '../pages/Extra/not-verified/not-verified';
+import { NotificationsPage } from '../pages/notifications/notifications';
+import { SettingsPage } from '../pages/settings/settings';
+import { NotiPopPage } from '../pages/noti-pop/noti-pop';
 
 
 
@@ -47,6 +50,9 @@ firebase.initializeApp(firebaseCred);
     AddProductPage,
     ChangePassPage,
     NotVerifiedPage,
+    NotificationsPage,
+    SettingsPage,
+    NotiPopPage,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +75,9 @@ firebase.initializeApp(firebaseCred);
     AddProductPage,
     ChangePassPage,
     NotVerifiedPage,
+    NotificationsPage,
+    SettingsPage,
+    NotiPopPage,
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler }

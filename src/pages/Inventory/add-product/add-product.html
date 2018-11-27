@@ -11,17 +11,24 @@
     <ion-card-content>
       <ion-item>
         <ion-label floating>Product Name</ion-label>
-        <ion-input type="text" [(ngModel)]="name"></ion-input>
+        <ion-input type="text" autofocus [(ngModel)]="name"></ion-input>
       </ion-item>
 
-      <ion-item>
+
+      <ion-item *ngIf="cats.length">
         <ion-label floating>Select Category</ion-label>
         <ion-select [(ngModel)]="catSel">
           <ion-option *ngFor="let c of cats" [value]="c">{{c.Name}}</ion-option>
         </ion-select>
       </ion-item>
 
-<!-- Image Addition       -->
+      <ion-item>
+        <ion-label floating>Quantity</ion-label>
+        <ion-input type="number" [(ngModel)]="Quantity"></ion-input>
+      </ion-item>
+
+
+      <!-- Image Addition       -->
       <ion-item class="selects" *ngIf="!img1">
         <ion-label color="whiter">Select Image</ion-label>
         <ion-input type="file" (change)="fileChange($event)" accept="image/x-png,image/gif,image/jpeg" id="file-input"
@@ -36,7 +43,7 @@
           </button>
         </div>
       </ion-item>
-<!-- Image Addition Ended -->
+      <!-- Image Addition Ended -->
 
 
       <button ion-button float-right margin-top (click)="checkData()">Add Product</button>

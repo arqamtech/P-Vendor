@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, MenuController, LoadingController, ToastController, Alert } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { SignUpPage } from '../sign-up/sign-up';
+import { DashboardPage } from '../../MainPages/dashboard/dashboard';
 
 
 @IonicPage()
@@ -24,9 +25,13 @@ export class LoginPage {
     public toastCtrl: ToastController,
   ) {
     this.menuCtrl.enable(false);
+    firebase.auth().onAuthStateChanged((user)=>{
+      if(user){
+        this.navCtrl.setRoot(DashboardPage);
+      }
+    })
 
   }
-
 
 
 

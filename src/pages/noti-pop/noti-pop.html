@@ -1,0 +1,14 @@
+<ion-content>
+  <ion-list *ngIf="!notis.length">
+    <ion-item>
+      You are All Caught Up !!
+    </ion-item>
+    <button ion-button block (click)="viewAll()">View All</button>
+  </ion-list>
+  <ion-list *ngIf="notis.length">
+    <ion-item *ngFor="let n of notis">
+      {{n.Message}}
+    </ion-item>
+    <button ion-button block (click)="viewAll()">View All</button>
+  </ion-list>
+</ion-content>

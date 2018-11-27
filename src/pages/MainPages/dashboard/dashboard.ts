@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { AngularFireDatabase } from '@angular/fire/database';
 import * as firebase from 'firebase';
+import { NotVerifiedPage } from '../../Extra/not-verified/not-verified';
 
 @IonicPage()
 @Component({
@@ -17,7 +18,7 @@ export class DashboardPage {
     private menuCtrl: MenuController,
   ) {
     this.menuCtrl.enable(true);
-    this.getUser();
+    // this.getUser();
   }
 
 
@@ -26,7 +27,7 @@ export class DashboardPage {
   getUser(){
     firebase.database().ref("Seller Data/Sellers").child(firebase.auth().currentUser.uid).once("value",itemSnap=>{
       if(!itemSnap.val().Verified){
-        console.log("Not Verified");
+        this.navCtrl.setRoot(NotVerifiedPage);
       }
     })
   }

@@ -3,6 +3,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-buttons end>
+      <button ion-button padding-right margin-right clear icon-only (click)="gtNoti($event)">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+      <button ion-button padding-right margin-right clear icon-only (click)="gtSettings()">
+        <ion-icon name="md-settings"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -14,13 +22,75 @@
 
   <button ion-button float-right (click)="gtCats()">View Categories</button>
 
+  <ion-slides *ngIf="!prods.length">
+    <ion-slide>
+      <img src="assets/imgs/ndf.png">
+    </ion-slide>
+  </ion-slides>
+
+  <ion-grid *ngIf="prods.length">
+    <ion-navbar color="primary">
+      <ion-row>
+        <ion-col col-2>
+          <ion-title>Product Name</ion-title>
+        </ion-col>
+        <ion-col col-2>
+          <ion-title>Category</ion-title>
+        </ion-col>
+        <ion-col col-1>
+          <ion-title>Quantity</ion-title>
+        </ion-col>
+        <ion-col col-2>
+          <ion-title>Status</ion-title>
+        </ion-col>
+        <ion-col col-1>
+          <ion-title>Sales</ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-navbar>
+  </ion-grid>
 
 
-  {{prods | json}}
-
-
-
-
+  <ion-card *ngIf="prods.length">
+    <ion-card-content>
+      <ion-grid>
+        <ion-row text-left *ngFor="let p of prods">
+          <ion-col col-2>
+            {{p.Name}}
+          </ion-col>
+          <ion-col col-2>
+            {{p.Category}}
+          </ion-col>
+          <ion-col col-1>
+            {{p.Quantity}}
+          </ion-col>
+          <ion-col col-2>
+            {{p.Status}}
+          </ion-col>
+          <ion-col col-1>
+            40
+          </ion-col>
+          <ion-col col-2>
+            <a [href]="p.ImageUrl" target="_blank">
+              <button ion-button icon-only clear>
+                <ion-icon name="ios-image"></ion-icon>
+              </button>
+            </a>
+            <button ion-button icon-only (click)="edit(p)" clear>
+              <ion-icon name="md-create"></ion-icon>
+            </button>
+            <button ion-button icon-only color="danger" (click)="delPConfirm(p)" clear>
+              <ion-icon name="md-trash"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-1>
+            <button ion-button clear (click)="addInventory(p)">Add Inventory</button><br/>
+            <button ion-button clear (click)="viewBar(p)">View Barcode</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
 
 

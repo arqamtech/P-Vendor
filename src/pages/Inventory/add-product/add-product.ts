@@ -9,6 +9,9 @@ import moment from 'moment';
   templateUrl: 'add-product.html',
 })
 export class AddProductPage {
+
+  editP = this.navParams.get("product");
+
   // Image Parameters
   img1: any;
   img2: any;
@@ -21,6 +24,7 @@ export class AddProductPage {
 
   name: string;
   catSel: any;
+  Quantity : string;
 
   constructor(
     public navCtrl: NavController,
@@ -29,6 +33,10 @@ export class AddProductPage {
     public toastCtrl: ToastController,
   ) {
     this.getCats();
+    if(this.editP){
+      this.name = this.editP.Name;
+      this.img1 = this.editP.ImageUrl;
+    }
   }
 
   addProduct() {
@@ -37,9 +45,18 @@ export class AddProductPage {
     });
     loading.present();
 
+    firebase.storage().ref("Products").child(firebase.auth().currentUser.uid).child(this.name).put(this.img2).then(()=>{
+      firebase.storage().ref("Products").child(firebase.auth().currentUser.uid).child(this.name).getDownloadURL().then((dURL)=>{
+        this.url = dURL;
+      }).then(()=>{
     firebase.database().ref("Products").push({
      Name : this.name,
      Category : this.catSel.Name,
+     CategoryKey : this.catSel.key,
+     Quantity : this.Quantity,
+     Status :"Pending",
+     ImageUrl : this.url,
+    //  Sales : '0',
      TimeStamp : moment().format(),
     }).then((res) => {
       firebase.database().ref("CategorieswiseProducts").child(this.catSel.key).child(res.key).set("true").then(()=>{
@@ -50,18 +67,35 @@ export class AddProductPage {
         })
       });
     });
-  }
+  });
+});
+}
 
   checkData(){
     if(this.name){
       if(this.catSel){
+        if(this.img2){
           this.addProduct();
+        }else{this.presentToast("Select a Product Image")}
       }else{this.presentToast("Select a Category")}
     }else{this.presentToast("Enter Product Name")}
   }
 
 
   getCats() {
+    let loading = this.loadingCtrl.create({
+      content: 'Getting Categories...'
+    });
+    loading.present();
+    if(this.editP){
+        firebase.database().ref("Categories").child(this.editP.CategoryKey).once("value",itemSnap=>{
+          let temop  = itemSnap.val();
+          temop.key = itemSnap.key;
+          this.catSel = temop;
+        }).then(()=>{
+          loading.dismiss();
+        })            
+    }else{
     firebase.database().ref("Seller Data/Categories").child(firebase.auth().currentUser.uid).once("value", itemSnap => {
       this.cats = [];
       itemSnap.forEach(snap => {
@@ -69,10 +103,12 @@ export class AddProductPage {
           let temp  = itemSnap.val();
           temp.key = itemSnap.key;
           this.cats.push(temp);
-        })
-      })
-      console.log(this.cats)
-    })
+        }).then(()=>{
+          loading.dismiss();
+        });
+      });
+    });
+  }
   }
 
   presentToast(msg) {
@@ -84,6 +120,7 @@ export class AddProductPage {
     });
     toast.present();
   }
+
 
   //Image Uploading Section
   fileChange(event) {
