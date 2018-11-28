@@ -20,7 +20,7 @@ export class NotiPopPage {
   }
 
   getNoti(){
-    firebase.database().ref("Sellers Data").child(firebase.auth().currentUser.uid).once("value",itemSnap=>{
+    firebase.database().ref("Sellers Data").child(firebase.auth().currentUser.uid).child("Notifications").once("value",itemSnap=>{
       this.notis = [];
       itemSnap.forEach(snap=>{
         var temp : any = snap.val();

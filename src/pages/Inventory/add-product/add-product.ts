@@ -69,9 +69,16 @@ export class AddProductPage {
     }).then((res) => {
       firebase.database().ref("CategorieswiseProducts").child(this.catSel.key).child(res.key).set("true").then(()=>{
         firebase.database().ref("Seller Data/Products").child(firebase.auth().currentUser.uid).child(res.key).set(true).then(()=>{
-          this.navCtrl.pop();
-          this.presentToast("Product Added");
-          loading.dismiss();
+          firebase.database().ref("Admin Data/Notifications").push({
+            Name : this.name,
+            Type : "Product Verification Pending",
+            Vendor : firebase.auth().currentUser.uid,
+            Status : "Unread",
+          }).then(()=>{
+            this.navCtrl.pop();
+            this.presentToast("Product Added");
+            loading.dismiss();
+          })
         })
       });
     });
