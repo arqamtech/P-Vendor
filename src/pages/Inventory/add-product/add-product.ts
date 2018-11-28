@@ -20,7 +20,7 @@ export class AddProductPage {
   // Image Parameters Ended
 
   cats  :Array<any> = [];
-
+  storeName : string;
 
   name: string;
   catSel: any;
@@ -39,12 +39,18 @@ export class AddProductPage {
     }
   }
 
+  getUser(){
+  }
+
+
   addProduct() {
     let loading = this.loadingCtrl.create({
       content: 'Adding Product...'
     });
     loading.present();
 
+    firebase.database().ref("Seller Data/Sellers").child(firebase.auth().currentUser.uid).once("value",itemSnap=>{
+      var sn = itemSnap.val().StoreName;
     firebase.storage().ref("Products").child(firebase.auth().currentUser.uid).child(this.name).put(this.img2).then(()=>{
       firebase.storage().ref("Products").child(firebase.auth().currentUser.uid).child(this.name).getDownloadURL().then((dURL)=>{
         this.url = dURL;
@@ -56,7 +62,9 @@ export class AddProductPage {
      Quantity : this.Quantity,
      Status :"Pending",
      ImageUrl : this.url,
-    //  Sales : '0',
+     StoreKey : firebase.auth().currentUser.uid,
+     StoreName : sn,
+     Sales : '0',
      TimeStamp : moment().format(),
     }).then((res) => {
       firebase.database().ref("CategorieswiseProducts").child(this.catSel.key).child(res.key).set("true").then(()=>{
@@ -69,6 +77,9 @@ export class AddProductPage {
     });
   });
 });
+
+})
+
 }
 
   checkData(){
