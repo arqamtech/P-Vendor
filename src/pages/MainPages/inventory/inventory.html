@@ -22,13 +22,8 @@
 
   <button ion-button float-right (click)="gtCats()">View Categories</button>
 
-  <ion-slides *ngIf="!prods.length">
-    <ion-slide>
-      <img src="assets/imgs/ndf.png">
-    </ion-slide>
-  </ion-slides>
 
-  <ion-grid *ngIf="prods.length">
+  <ion-grid>
     <ion-navbar color="primary">
       <ion-row>
         <ion-col col-2>
