@@ -7,6 +7,7 @@ import { LoginPage } from '../pages/Auth/login/login';
 import { DashboardPage } from '../pages/MainPages/dashboard/dashboard';
 import { SalesPage } from '../pages/MainPages/sales/sales';
 import { InventoryPage } from '../pages/MainPages/inventory/inventory';
+import { OrdersPage } from '../pages/MainPages/orders/orders';
 @Component({
   templateUrl: 'app.html'
 })
@@ -29,6 +30,7 @@ export class MyApp {
     this.pages = [
       { title: 'DashBoard', component: DashboardPage, icon: "ios-analytics", color: "whiter" },
       { title: 'Sales', component: SalesPage, icon: "ios-cash", color: "whiter" },
+      { title: 'Orders', component: OrdersPage, icon: "md-cart", color: "whiter" },
       { title: 'Inventory', component: InventoryPage, icon: "logo-buffer", color: "whiter" },
       { title: 'Profile', component: ProfilePage, icon: "ios-person", color: "whiter" },
 

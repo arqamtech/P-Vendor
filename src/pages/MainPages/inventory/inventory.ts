@@ -4,9 +4,9 @@ import { AddProductPage } from '../../Inventory/add-product/add-product';
 import { CategoriesPage } from '../../Inventory/categories/categories';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
-import { NotificationsPage } from '../../notifications/notifications';
-import { NotiPopPage } from '../../noti-pop/noti-pop';
-import { SettingsPage } from '../../settings/settings';
+import { ViewBarCodePage } from '../../Inventory/view-bar-code/view-bar-code';
+import { NotiPopPage } from '../../Notifications/noti-pop/noti-pop';
+import { SettingsPage } from '../../Extra/settings/settings';
 
 @IonicPage()
 @Component({
@@ -16,6 +16,7 @@ import { SettingsPage } from '../../settings/settings';
 export class InventoryPage {
 
   prods: Array<any> = [];
+
 
   constructor(
     public navCtrl: NavController,
@@ -32,6 +33,10 @@ export class InventoryPage {
     this.getProducts();
   }
 
+
+  viewBar(p){
+    this.navCtrl.push(ViewBarCodePage,{product : p});
+  }
   getProducts() {
     let loading = this.loadingCtrl.create({
       content: 'Getting Products List...'

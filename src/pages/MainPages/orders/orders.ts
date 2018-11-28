@@ -6,10 +6,10 @@ import { SettingsPage } from '../../Extra/settings/settings';
 
 @IonicPage()
 @Component({
-  selector: 'page-sales',
-  templateUrl: 'sales.html',
+  selector: 'page-orders',
+  templateUrl: 'orders.html',
 })
-export class SalesPage {
+export class OrdersPage {
 
   constructor(
   public navCtrl: NavController, 
@@ -17,12 +17,6 @@ export class SalesPage {
   public navParams: NavParams
   ) {
   }
-
-
-
-
-
-
   gtNoti(myEvent) {
     let popover = this.popoverCtrl.create(NotiPopPage);
     popover.present({

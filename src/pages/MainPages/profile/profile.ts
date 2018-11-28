@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, LoadingController, PopoverController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
+import { NotiPopPage } from '../../Notifications/noti-pop/noti-pop';
+import { SettingsPage } from '../../Extra/settings/settings';
 
 @IonicPage()
 @Component({
@@ -24,6 +26,7 @@ export class ProfilePage {
   public navParams: NavParams,
   public db : AngularFireDatabase,    
   public loadingCtrl: LoadingController,
+  public popoverCtrl: PopoverController,
   private menuCtrl: MenuController,
   ) {
     this.menuCtrl.enable(true);
@@ -52,6 +55,15 @@ export class ProfilePage {
       this.created = temp.TimeStamp;
     })
     loading.dismiss();
+  }
+  gtNoti(myEvent) {
+    let popover = this.popoverCtrl.create(NotiPopPage);
+    popover.present({
+      ev: myEvent
+    });
+  }
+  gtSettings(){
+    this.navCtrl.push(SettingsPage);
   }
 
 }

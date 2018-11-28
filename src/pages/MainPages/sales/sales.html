@@ -3,12 +3,20 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-buttons end>
+      <button ion-button padding-right margin-right clear icon-only (click)="gtNoti($event)">
+        <ion-icon name="md-notifications"></ion-icon>
+      </button>
+      <button ion-button padding-right margin-right clear icon-only (click)="gtSettings()">
+        <ion-icon name="md-settings"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-item no-lines class="content">
-    <h1 class="title">Sales</h1>
+    <h1 class="title">SALES</h1>
   </ion-item>
 
 

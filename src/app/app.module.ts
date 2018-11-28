@@ -15,13 +15,16 @@ import { InventoryPage } from '../pages/MainPages/inventory/inventory';
 import { AddCategoriesPage } from '../pages/Inventory/add-categories/add-categories';
 import { CategoriesPage } from '../pages/Inventory/categories/categories';
 import { AddProductPage } from '../pages/Inventory/add-product/add-product';
-import { ChangePassPage } from '../pages/Extra/change-pass/change-pass';
 import { NotVerifiedPage } from '../pages/Extra/not-verified/not-verified';
-import { NotificationsPage } from '../pages/notifications/notifications';
-import { SettingsPage } from '../pages/settings/settings';
-import { NotiPopPage } from '../pages/noti-pop/noti-pop';
 
-
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner'; 
+import { ChangePassPage } from '../pages/Auth/change-pass/change-pass';
+import { NotificationsPage } from '../pages/Notifications/notifications/notifications';
+import { SettingsPage } from '../pages/Extra/settings/settings';
+import { NotiPopPage } from '../pages/Notifications/noti-pop/noti-pop';
+import { ViewBarCodePage } from '../pages/Inventory/view-bar-code/view-bar-code';
+import { OrdersPage } from '../pages/MainPages/orders/orders';
 
 export const firebaseCred = {
   apiKey: "AIzaSyDfYGCZchTJHmNBlk4-T4-B24d7qtBs4LQ",
@@ -53,6 +56,8 @@ firebase.initializeApp(firebaseCred);
     NotificationsPage,
     SettingsPage,
     NotiPopPage,
+    ViewBarCodePage,
+    OrdersPage,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,7 @@ firebase.initializeApp(firebaseCred);
     AngularFireModule.initializeApp(firebaseCred),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    NgxQRCodeModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -78,9 +84,13 @@ firebase.initializeApp(firebaseCred);
     NotificationsPage,
     SettingsPage,
     NotiPopPage,
+    ViewBarCodePage,
+    OrdersPage,
   ],
   providers: [
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    BarcodeScanner,
+
   ]
 })
 export class AppModule { }
