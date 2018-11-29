@@ -16,6 +16,7 @@ import { SettingsPage } from '../../Extra/settings/settings';
 export class InventoryPage {
 
   prods: Array<any> = [];
+  prodsLoaded: Array<any> = [];
 
 
   constructor(
@@ -38,23 +39,39 @@ export class InventoryPage {
     this.navCtrl.push(ViewBarCodePage,{product : p});
   }
   getProducts() {
-    let loading = this.loadingCtrl.create({
-      content: 'Getting Products List...'
-    });
-    // loading.present();
-
     this.db.list(`Seller Data/Products/${firebase.auth().currentUser.uid}`).snapshotChanges().subscribe(snap => {
+      let tempArray = [];
+
       this.prods = [];
       snap.forEach(snip => {
         firebase.database().ref("Products").child(snip.key).once("value", iiSnap => {
           var temp: any = iiSnap.val();
           temp.key = iiSnap.key;
-          this.prods.push(temp);
-        }).then(() => {
-          // loading.dismiss();
+          tempArray.push(temp);
         })
+        this.prods = tempArray;
+        this.prodsLoaded = tempArray;
       })
     })
+  }
+
+  initializeItems(): void {
+    this.prods = this.prodsLoaded;
+  }
+  getItems(searchbar) {
+    this.initializeItems();
+    let q = searchbar;
+    if (!q) {
+      return;
+    }
+    this.prods = this.prods.filter((v) => {
+      if (v.Name && q) {
+        if (v.Name.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
   }
 
   gtNoti(myEvent) {
