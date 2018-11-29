@@ -15,26 +15,72 @@
 </ion-header>
 
 <ion-content padding>
-<ion-item no-lines class="content">
-<h1 class="title">DASHBOARD</h1>
-</ion-item>
+  <ion-item no-lines class="content">
+    <h1 class="title">DASHBOARD</h1>
+  </ion-item>
 
-<ion-grid>
-<ion-row>
+  <ion-grid>
+    <ion-row>
 
-
-<!-- <ion-col col-2>
-  <ion-card>
-    <ion-card-content>
-      <p class="mNum">{{users}}</p>
-      <p  class="mText">Users</p>
-    </ion-card-content>
-  </ion-card>
-</ion-col> -->
-
+      <ion-col col-2>
+        <ion-card>
+          <ion-card-content>
+            <p class="mNum">{{prods.length}}</p>
+            <p class="mText">Products</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
 
 
+      <ion-col col-2>
+        <ion-card>
+          <ion-card-content>
+            <p class="mNum">{{pendOrdersTot}}</p>
+            <p class="mText">Pending Orders</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
 
-</ion-row>
-</ion-grid>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-grid>
+    <ion-row>
+
+
+      <ion-col col-6>
+        <ion-card>
+          <ion-card-content>
+            <div style="display: block">
+              <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
+                (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+
+
+      <ion-col col-6>
+        <ion-card>
+          <ion-card-content>
+            <ion-card-title color="primary">Top Selling Products</ion-card-title>
+
+            <ion-item *ngFor = "let p of prods ;let i=index; ">
+              <h3 item-start *ngIf="i<4" >{{i+1}}.{{p.Name }}</h3>
+              <h2 item-end ion-text *ngIf="i<4" color="primary" >{{p.Sales}}</h2>
+            </ion-item>
+
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+
+
+
+    </ion-row>
+  </ion-grid>
+
+
 </ion-content>

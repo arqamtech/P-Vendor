@@ -25,6 +25,7 @@ import { SettingsPage } from '../pages/Extra/settings/settings';
 import { NotiPopPage } from '../pages/Notifications/noti-pop/noti-pop';
 import { ViewBarCodePage } from '../pages/Inventory/view-bar-code/view-bar-code';
 import { OrdersPage } from '../pages/MainPages/orders/orders';
+import { ChartsModule } from 'ng2-charts';
 
 export const firebaseCred = {
   apiKey: "AIzaSyDfYGCZchTJHmNBlk4-T4-B24d7qtBs4LQ",
@@ -66,6 +67,7 @@ firebase.initializeApp(firebaseCred);
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgxQRCodeModule,
+    ChartsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

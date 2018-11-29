@@ -41,8 +41,6 @@ export class InventoryPage {
   getProducts() {
     this.db.list(`Seller Data/Products/${firebase.auth().currentUser.uid}`).snapshotChanges().subscribe(snap => {
       let tempArray = [];
-
-      this.prods = [];
       snap.forEach(snip => {
         firebase.database().ref("Products").child(snip.key).once("value", iiSnap => {
           var temp: any = iiSnap.val();

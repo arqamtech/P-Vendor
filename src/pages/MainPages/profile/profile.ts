@@ -20,6 +20,7 @@ export class ProfilePage {
   email: string;
   pass: string;
   created: string;
+  status : string;
 
   constructor(
   public navCtrl: NavController, 
@@ -53,6 +54,7 @@ export class ProfilePage {
       this.email = temp.Email;
       this.pass = temp.Pass;
       this.created = temp.TimeStamp;
+      this.status = temp.Status;
     })
     loading.dismiss();
   }
