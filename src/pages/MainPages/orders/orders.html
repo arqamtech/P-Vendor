@@ -15,26 +15,53 @@
 </ion-header>
 
 <ion-content padding>
-<ion-item no-lines class="content">
-<h1 class="title">ORDERS</h1>
-</ion-item>
+  <ion-item no-lines class="content">
+    <h1 class="title">ORDERS</h1>
+  </ion-item>
 
-<ion-grid>
-<ion-row>
+  <ion-grid>
+    <ion-row>
+
+      <ion-card>
+        <ion-navbar color="primary">
+          <ion-title>Pending Orders</ion-title>
+          <ion-buttons end>
+            <button ion-button *ngIf="!viewPending" clear icon-only (click)="togglePending()">
+              <ion-icon name="ios-arrow-down"></ion-icon>
+            </button>
+            <button ion-button *ngIf="viewPending" clear icon-only (click)="togglePending()">
+              <ion-icon name="ios-arrow-up"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-navbar>
+        <ion-card-content *ngIf="viewPending">
+
+          <h2>No Pending Orders</h2>
 
 
-<!-- <ion-col col-2>
-  <ion-card>
-    <ion-card-content>
-      <p class="mNum">{{users}}</p>
-      <p  class="mText">Users</p>
-    </ion-card-content>
-  </ion-card>
-</ion-col> -->
+        </ion-card-content>
+      </ion-card>
+
+
+      <ion-card>
+        <ion-navbar color="primary">
+          <ion-title>Completed Orders</ion-title>
+          <ion-buttons end>
+            <button ion-button *ngIf="!viewCompleted" clear icon-only (click)="toggleCompleted()">
+              <ion-icon name="ios-arrow-down"></ion-icon>
+            </button>
+            <button ion-button *ngIf="viewCompleted" clear icon-only (click)="toggleCompleted()">
+              <ion-icon name="ios-arrow-up"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-navbar>
+        <ion-card-content *ngIf="viewCompleted">
+            <h2>No Orders Completed</h2>
+          </ion-card-content>
+      </ion-card>
 
 
 
-
-</ion-row>
-</ion-grid>
+    </ion-row>
+  </ion-grid>
 </ion-content>

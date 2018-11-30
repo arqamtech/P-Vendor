@@ -11,12 +11,35 @@ import { SettingsPage } from '../../Extra/settings/settings';
 })
 export class OrdersPage {
 
+  viewPending : boolean = false;
+  viewCompleted : boolean = false;
+
+
   constructor(
   public navCtrl: NavController, 
   public popoverCtrl: PopoverController,
   public navParams: NavParams
   ) {
   }
+
+
+
+
+
+
+
+
+
+
+
+
+  toggleCompleted(){
+    this.viewCompleted = !this.viewCompleted;
+  }
+  togglePending(){
+    this.viewPending = !this.viewPending;
+  }
+
   gtNoti(myEvent) {
     let popover = this.popoverCtrl.create(NotiPopPage);
     popover.present({
