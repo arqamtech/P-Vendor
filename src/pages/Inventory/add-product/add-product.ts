@@ -26,6 +26,14 @@ export class AddProductPage {
   catSel: any;
   Quantity : string;
 
+  //Attributes
+  isCols : boolean = false;
+  colorsEntered : string='';
+
+  isSize : boolean = false;
+  sizeEntered : string='';
+
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -65,6 +73,8 @@ export class AddProductPage {
      StoreKey : firebase.auth().currentUser.uid,
      StoreName : sn,
      Sales : '0',
+     Color : this.colorsEntered,
+     Size : this.sizeEntered,
      TimeStamp : moment().format(),
     }).then((res) => {
       firebase.database().ref("CategorieswiseProducts").child(this.catSel.key).child(res.key).set("true").then(()=>{

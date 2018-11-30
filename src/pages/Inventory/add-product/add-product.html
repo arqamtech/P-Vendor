@@ -27,6 +27,31 @@
         <ion-input type="number" [(ngModel)]="Quantity"></ion-input>
       </ion-item>
 
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <ion-item>
+              <ion-label>Colors</ion-label>
+              <ion-checkbox [(ngModel)]="isCols"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6 push-4 *ngIf="isCols">
+            <ion-input type="text" [(ngModel)]="colorsEntered" placeholder="Enter the Color"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-2>
+            <ion-item>
+              <ion-label>Size</ion-label>
+              <ion-checkbox [(ngModel)]="isSize"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6 push-4 *ngIf="isSize">
+            <ion-input type="text" [(ngModel)]="sizeEntered" placeholder="Enter the Size"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
 
       <!-- Image Addition       -->
       <ion-item class="selects" *ngIf="!img1">

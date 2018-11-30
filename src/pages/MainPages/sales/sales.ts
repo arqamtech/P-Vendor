@@ -103,8 +103,7 @@ export class SalesPage {
 
 
   sell(p, q) {
-    if (q > 0) {
-
+    if (q > 0 && p.Quantity>q) {
       firebase.database().ref("Products").child(p.key).child("Quantity").transaction(quans => {
         let to = Number(quans);
         let quan = Number(q);

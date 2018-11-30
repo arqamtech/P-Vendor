@@ -24,12 +24,14 @@ export class AddTicketPage {
   checkData(){
     if(this.title){
       if(this.description){
-
+        this.addTicket();
       }else{this.presentToast("Enter a Description");}
     }else{this.presentToast("Enter a Title");}
   }
 
-
+  addTicket(){
+    // firebase.database().ref("")
+  }
 
 
   presentToast(msg) {
