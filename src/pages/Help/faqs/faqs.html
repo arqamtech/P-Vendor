@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>FAQ's</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- <ion-card class="mainCard" >
+    <ion-card-content> -->
+  <div class="mainCard">
+
+
+    <ion-card>
+      <ion-navbar color="primary">
+        <ion-title>Question 1</ion-title>
+        <ion-buttons end>
+          <button ion-button *ngIf="!f1" clear icon-only (click)="this.f1 = !this.f1;">
+            <ion-icon name="ios-arrow-down"></ion-icon>
+          </button>
+          <button ion-button *ngIf="f1" clear icon-only (click)="this.f1 = !this.f1;">
+            <ion-icon name="ios-arrow-up"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-navbar>
+      <ion-card-content *ngIf="f1">
+        <h2>Sample Answer</h2>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-navbar color="primary">
+        <ion-title>Question 2</ion-title>
+        <ion-buttons end>
+          <button ion-button *ngIf="!f2" clear icon-only (click)="this.f2 = !this.f2;">
+            <ion-icon name="ios-arrow-down"></ion-icon>
+          </button>
+          <button ion-button *ngIf="f2" clear icon-only (click)="this.f2 = !this.f2;">
+            <ion-icon name="ios-arrow-up"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-navbar>
+      <ion-card-content *ngIf="f2">
+        <h2>Sample Answer</h2>
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-card>
+      <ion-navbar color="primary">
+        <ion-title>Question 3</ion-title>
+        <ion-buttons end>
+          <button ion-button *ngIf="!f3" clear icon-only (click)="this.f3 = !this.f3;">
+            <ion-icon name="ios-arrow-down"></ion-icon>
+          </button>
+          <button ion-button *ngIf="f3" clear icon-only (click)="this.f3 = !this.f3;">
+            <ion-icon name="ios-arrow-up"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-navbar>
+      <ion-card-content *ngIf="f3">
+        <h2>Sample Answer</h2>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+
+  <!-- </ion-card-content>
+  </ion-card> -->
+
+
+
+</ion-content>

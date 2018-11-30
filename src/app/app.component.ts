@@ -8,6 +8,7 @@ import { DashboardPage } from '../pages/MainPages/dashboard/dashboard';
 import { SalesPage } from '../pages/MainPages/sales/sales';
 import { InventoryPage } from '../pages/MainPages/inventory/inventory';
 import { OrdersPage } from '../pages/MainPages/orders/orders';
+import { HelpPage } from '../pages/MainPages/help/help';
 @Component({
   templateUrl: 'app.html'
 })
@@ -33,6 +34,7 @@ export class MyApp {
       { title: 'Orders', component: OrdersPage, icon: "md-cart", color: "whiter" },
       { title: 'Inventory', component: InventoryPage, icon: "logo-buffer", color: "whiter" },
       { title: 'Profile', component: ProfilePage, icon: "ios-person", color: "whiter" },
+      { title: 'Help', component: HelpPage, icon: "ios-help-buoy", color: "whiter" },
 
 
     ];

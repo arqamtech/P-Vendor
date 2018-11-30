@@ -1,0 +1,12 @@
+page-add-ticket {
+ion-input,ion-textarea{
+    border-bottom: 1px solid map-get($colors,primary );
+}
+.card{
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    width: 60%;
+}
+}

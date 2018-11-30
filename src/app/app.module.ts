@@ -26,6 +26,11 @@ import { NotiPopPage } from '../pages/Notifications/noti-pop/noti-pop';
 import { ViewBarCodePage } from '../pages/Inventory/view-bar-code/view-bar-code';
 import { OrdersPage } from '../pages/MainPages/orders/orders';
 import { ChartsModule } from 'ng2-charts';
+import { HelpPage } from '../pages/MainPages/help/help';
+import { FaqsPage } from '../pages/Help/faqs/faqs';
+import { ViewticketsPage } from '../pages/Help/Tickets/viewtickets/viewtickets';
+import { AddTicketPage } from '../pages/Help/Tickets/add-ticket/add-ticket';
+import { TicketDetailsPage } from '../pages/Help/Tickets/ticket-details/ticket-details';
 
 export const firebaseCred = {
   apiKey: "AIzaSyDfYGCZchTJHmNBlk4-T4-B24d7qtBs4LQ",
@@ -59,6 +64,11 @@ firebase.initializeApp(firebaseCred);
     NotiPopPage,
     ViewBarCodePage,
     OrdersPage,
+    HelpPage,
+    FaqsPage,
+    ViewticketsPage,
+    AddTicketPage,
+    TicketDetailsPage,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +98,11 @@ firebase.initializeApp(firebaseCred);
     NotiPopPage,
     ViewBarCodePage,
     OrdersPage,
+    HelpPage,
+    FaqsPage,
+    ViewticketsPage,
+    AddTicketPage,
+    TicketDetailsPage,
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
