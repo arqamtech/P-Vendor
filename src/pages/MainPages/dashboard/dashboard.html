@@ -51,11 +51,11 @@
 
       <ion-col col-6>
         <ion-card>
+          <ion-card-header>
+            Doughnut Chart
+          </ion-card-header>
           <ion-card-content>
-            <div style="display: block">
-              <canvas baseChart [data]="doughnutChartData" [labels]="doughnutChartLabels" [chartType]="doughnutChartType"
-                (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)"></canvas>
-            </div>
+            <canvas #doughnutCanvas></canvas>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -65,11 +65,11 @@
       <ion-col col-6>
         <ion-card>
           <ion-card-content>
-            <ion-card-title color="primary">Top Selling Products</ion-card-title>
+            <ion-card-title color="primary">Top 5 Selling Products</ion-card-title>
 
-            <ion-item *ngFor = "let p of prods ;let i=index; ">
-              <h3 item-start *ngIf="i<4" >{{i+1}}.{{p.Name }}</h3>
-              <h2 item-end ion-text *ngIf="i<4" color="primary" >{{p.Sales}}</h2>
+            <ion-item *ngFor="let p of prods ;let i=index; ">
+              <h3 item-start *ngIf="i<4">{{i+1}}.{{p.Name }}</h3>
+              <h2 item-end ion-text *ngIf="i<4" color="primary">{{p.Sales}}</h2>
             </ion-item>
 
           </ion-card-content>
