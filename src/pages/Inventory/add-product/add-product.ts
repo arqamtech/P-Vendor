@@ -122,6 +122,9 @@ export class AddProductPage {
           this.catSel = temop;
         }).then(()=>{
           loading.dismiss();
+        }).catch((e)=>{
+          loading.dismiss();
+          this.presentToast("Please Add Categores First");
         })            
     }else{
     firebase.database().ref("Seller Data/Categories").child(firebase.auth().currentUser.uid).once("value", itemSnap => {
