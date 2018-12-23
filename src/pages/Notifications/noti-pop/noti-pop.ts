@@ -2,6 +2,7 @@ import { Component, ContentChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { NotificationsPage } from '../notifications/notifications';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -14,18 +15,19 @@ export class NotiPopPage {
 
   constructor(
   public navCtrl: NavController, 
+  public db : AngularFireDatabase,
   public navParams: NavParams
   ) {
     this.getNoti();
   }
 
   getNoti(){
-    firebase.database().ref("Sellers Data").child(firebase.auth().currentUser.uid).child("Notifications").once("value",itemSnap=>{
+    this.db.list(`Seller Data/Notifications/${firebase.auth().currentUser.uid}`).snapshotChanges().subscribe(itemSnap=>{
       this.notis = [];
-      itemSnap.forEach(snap=>{
-        var temp : any = snap.val();
-        temp.key = snap.key;
-        if(temp.Status=="Unread"){
+      itemSnap.forEach(snip=>{
+        var temp : any = snip.payload.val();
+        temp.key = snip.key;
+        if(temp.Status == "Unread"){
           this.notis.push(temp);
         }
       })

@@ -7,7 +7,7 @@
   </ion-list>
   <ion-list *ngIf="notis.length">
     <ion-item *ngFor="let n of notis">
-      {{n.Message}}
+      {{n.Type}}
     </ion-item>
     <button ion-button block (click)="viewAll()">View All</button>
   </ion-list>
