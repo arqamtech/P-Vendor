@@ -12,8 +12,6 @@ import { LoginPage } from '../pages/Auth/login/login';
 import { SignUpPage } from '../pages/Auth/sign-up/sign-up';
 import { SalesPage } from '../pages/MainPages/sales/sales';
 import { InventoryPage } from '../pages/MainPages/inventory/inventory';
-import { AddCategoriesPage } from '../pages/Inventory/add-categories/add-categories';
-import { CategoriesPage } from '../pages/Inventory/categories/categories';
 import { AddProductPage } from '../pages/Inventory/add-product/add-product';
 import { NotVerifiedPage } from '../pages/Extra/not-verified/not-verified';
 
@@ -54,8 +52,6 @@ firebase.initializeApp(firebaseCred);
     ProfilePage,
     SalesPage,
     InventoryPage,
-    AddCategoriesPage,
-    CategoriesPage,
     AddProductPage,
     ChangePassPage,
     NotVerifiedPage,
@@ -88,8 +84,6 @@ firebase.initializeApp(firebaseCred);
     ProfilePage,
     SalesPage,
     InventoryPage,
-    AddCategoriesPage,
-    CategoriesPage,
     AddProductPage,
     ChangePassPage,
     NotVerifiedPage,

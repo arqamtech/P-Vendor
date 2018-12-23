@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, MenuController, AlertController, LoadingController, ToastController, PopoverController } from 'ionic-angular';
 import { AddProductPage } from '../../Inventory/add-product/add-product';
-import { CategoriesPage } from '../../Inventory/categories/categories';
 import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { ViewBarCodePage } from '../../Inventory/view-bar-code/view-bar-code';
@@ -138,9 +137,6 @@ export class InventoryPage {
     this.navCtrl.push(AddProductPage);
   }
 
-  gtCats() {
-    this.navCtrl.push(CategoriesPage);
-  }
   delPConfirm(p) {
     let alert = this.alertCtrl.create({
       title: 'Remove Product ?',
