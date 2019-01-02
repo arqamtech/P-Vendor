@@ -14,21 +14,21 @@
       </ion-item>
 
 
-      <ion-item >
+      <ion-item>
         <ion-label floating>Select Category</ion-label>
-        <ion-select [(ngModel)]="catSel" (ionChange)="getSubCats()" >
+        <ion-select [(ngModel)]="catSel" (ionChange)="getSubCats()">
           <ion-option *ngFor="let c of cats" [value]="c">{{c.Name}}</ion-option>
         </ion-select>
       </ion-item>
 
-      <ion-item >
+      <ion-item>
         <ion-label floating>Select Sub Category</ion-label>
-        <ion-select [(ngModel)]="SubCatSel" (ionChange)="getSubCatItems()" >
+        <ion-select [(ngModel)]="SubCatSel" (ionChange)="getSubCatItems()">
           <ion-option *ngFor="let sc of subCats" [value]="sc">{{sc.Name}}</ion-option>
         </ion-select>
       </ion-item>
 
-      <ion-item >
+      <ion-item>
         <ion-label floating>Select Sub Category Item</ion-label>
         <ion-select [(ngModel)]="subCatItemSel">
           <ion-option *ngFor="let sci of SubCatItem" [value]="sci">{{sci.Name}}</ion-option>
@@ -44,7 +44,12 @@
         <ion-label floating>Quantity</ion-label>
         <ion-input type="number" [(ngModel)]="Quantity"></ion-input>
       </ion-item>
-      
+
+      <ion-item>
+        <ion-label floating>Price</ion-label>
+        <ion-input type="number" [(ngModel)]="Price"></ion-input>
+      </ion-item>
+
       <ion-grid>
         <ion-row>
           <ion-col col-4>
@@ -53,7 +58,7 @@
               <ion-checkbox [(ngModel)]="isCols"></ion-checkbox>
             </ion-item>
           </ion-col>
-          <ion-col col-4  *ngIf="isCols">
+          <ion-col col-4 *ngIf="isCols">
             <ion-input type="text" [(ngModel)]="colorsEntered" placeholder="Enter the Color"></ion-input>
           </ion-col>
         </ion-row>

@@ -32,7 +32,7 @@ export class AddProductPage {
 
   name: string;
   Quantity: string;
-
+  Price: string;
   //Attributes
   isCols: boolean = false;
   colorsEntered: string = '';
@@ -73,17 +73,18 @@ export class AddProductPage {
             Name: this.name,
             Category: this.catSel.Name,
             CategoryKey: this.catSel.key,
-            SubCategory : this.SubCatSel,
-            SubCategoryKey : this.SubCatSel.key,
-            SubCategoryItem : this.subCatItemSel,
-            SubCategoryItemKey : this.subCatItemSel.key,
-            BrandName : this.bName,
+            SubCategory: this.SubCatSel,
+            SubCategoryKey: this.SubCatSel.key,
+            SubCategoryItem: this.subCatItemSel,
+            SubCategoryItemKey: this.subCatItemSel.key,
+            BrandName: this.bName,
             Quantity: this.Quantity,
             Status: "Pending",
             ImageUrl: this.url,
             StoreKey: firebase.auth().currentUser.uid,
             StoreName: sn,
             Sales: '0',
+            Price: this.Price,
             Color: this.colorsEntered,
             Size: this.sizeEntered,
             TimeStamp: moment().format(),
@@ -92,21 +93,21 @@ export class AddProductPage {
               firebase.database().ref("SubCategoriesWiseProducts").child(this.SubCatSel.key).child(res.key).set("true").then(() => {
                 firebase.database().ref("SubCategoriesItemWiseProducts").child(this.subCatItemSel.key).child(res.key).set("true").then(() => {
                   firebase.database().ref("Seller Data/Products").child(firebase.auth().currentUser.uid).child(res.key).set(true).then(() => {
-                firebase.database().ref("Admin Data/Notifications").push({
-                  Name: this.name,
-                  Type: "Product Verification Pending",
-                  Vendor: firebase.auth().currentUser.uid,
-                  ProductKey : res.key,
-                  Status: "Unread",
-                }).then(() => {
-                  this.navCtrl.pop();
-                  this.presentToast("Product Added");
-                  loading.dismiss();
+                    firebase.database().ref("Admin Data/Notifications").push({
+                      Name: this.name,
+                      Type: "Product Verification Pending",
+                      Vendor: firebase.auth().currentUser.uid,
+                      ProductKey: res.key,
+                      Status: "Unread",
+                    }).then(() => {
+                      this.navCtrl.pop();
+                      this.presentToast("Product Added");
+                      loading.dismiss();
+                    })
+                  })
                 })
               })
-            })
-          })
-          });
+            });
           });
         });
       });
@@ -121,9 +122,11 @@ export class AddProductPage {
       if (this.catSel) {
         if (this.SubCatSel) {
           if (this.subCatItemSel) {
-            if (this.img2) {
-              this.addProduct();
-            } else { this.presentToast("Select a Product Image") }
+            if (this.Price) {
+              if (this.img2) {
+                this.addProduct();
+              } else { this.presentToast("Select a Product Image") }
+            } else { this.presentToast("Select a Price") }
           } else { this.presentToast("Select a Sub Category Item") }
         } else { this.presentToast("Select a Sub Category") }
       } else { this.presentToast("Select a Category") }
