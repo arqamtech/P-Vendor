@@ -90,8 +90,9 @@ export class DashboardPage {
 
 
     getUser(){
-      firebase.database().ref("Seller Data/Sellers").child(firebase.auth().currentUser.uid).once("value", itemSnap => {
-        if (itemSnap.val().Verified == "Unverified") {
+      // console.log(firebase.auth().currentUser.uid);     
+      firebase.database().ref("Seller Data").child("Sellers").child(firebase.auth().currentUser.uid).once("value", itemSnap => {
+        if (itemSnap.val().Status == "Unverified") {
           this.navCtrl.setRoot(NotVerifiedPage);
         }
       })
