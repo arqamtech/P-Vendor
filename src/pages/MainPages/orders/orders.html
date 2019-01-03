@@ -19,49 +19,43 @@
     <h1 class="title">ORDERS</h1>
   </ion-item>
 
+
+  <ion-navbar color="primary">
+    <ion-title>Pending Orders</ion-title>
+  </ion-navbar>
+
   <ion-grid>
     <ion-row>
+      <ion-col col-3>
+        <ion-card *ngFor="let o of pendingOrders">
+          <ion-card-content>
+            <ion-card-title>
+              {{o.Name}}
+            </ion-card-title>
+            <ion-item>
+            <ion-avatar >
+                <img [src]="o.ImageUrl" />
+              </ion-avatar>
+            </ion-item>
+            <ion-item>
+              <p item-start color="primary" ion-text>Quantity</p>
+              <p item-end>{{o.Quantity}}</p>
+            </ion-item>
+            <ion-item>
+              <p item-start color="primary" ion-text>Amount</p>
+              <p item-end>{{o.Amount}}</p>
+            </ion-item>
 
-      <ion-card>
-        <ion-navbar color="primary">
-          <ion-title>Pending Orders</ion-title>
-          <ion-buttons end>
-            <button ion-button *ngIf="!viewPending" clear icon-only (click)="togglePending()">
-              <ion-icon name="ios-arrow-down"></ion-icon>
-            </button>
-            <button ion-button *ngIf="viewPending" clear icon-only (click)="togglePending()">
-              <ion-icon name="ios-arrow-up"></ion-icon>
-            </button>
-          </ion-buttons>
-        </ion-navbar>
-        <ion-card-content *ngIf="viewPending">
 
-          <h2>No Pending Orders</h2>
-
-
-        </ion-card-content>
-      </ion-card>
-
-
-      <ion-card>
-        <ion-navbar color="primary">
-          <ion-title>Completed Orders</ion-title>
-          <ion-buttons end>
-            <button ion-button *ngIf="!viewCompleted" clear icon-only (click)="toggleCompleted()">
-              <ion-icon name="ios-arrow-down"></ion-icon>
-            </button>
-            <button ion-button *ngIf="viewCompleted" clear icon-only (click)="toggleCompleted()">
-              <ion-icon name="ios-arrow-up"></ion-icon>
-            </button>
-          </ion-buttons>
-        </ion-navbar>
-        <ion-card-content *ngIf="viewCompleted">
-            <h2>No Orders Completed</h2>
           </ion-card-content>
-      </ion-card>
-
-
-
+        </ion-card>
+      </ion-col>
     </ion-row>
   </ion-grid>
+
+
+
+
+
+
 </ion-content>
