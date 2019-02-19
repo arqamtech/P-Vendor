@@ -19,6 +19,13 @@
     <h1 class="title">VENDOR PROFILE</h1>
   </ion-item>
 
+  <button ion-button float-right margin-bottom (click)="gtaddBanner()">{{bannerText}}</button>
+
+
+  <ion-card  class="bCard" *ngIf="isBanner" >
+    <img class="bImg" src="{{Banner}}" />
+  </ion-card>
+
   <ion-card>
     <ion-card-content>
 
@@ -66,7 +73,6 @@
 
     </ion-card-content>
   </ion-card>
-
 
 
 

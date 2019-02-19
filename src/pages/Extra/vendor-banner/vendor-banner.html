@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Seller Banner</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="close()" clear icon-only>
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+
+  <ion-slides>
+    <ion-slide>
+
+
+      <ion-item class="selects" *ngIf="!img1">
+        <ion-label color="whiter">Select Image</ion-label>
+        <ion-input type="file" (change)="fileChange($event)" accept="image/x-png,image/gif,image/jpeg" id="file-input"
+          style="opacity: 0" #fileInp (ngModel)="file1"></ion-input>
+      </ion-item>
+
+
+
+      <ion-item *ngIf="img1">
+        <img [src]="img1" class="imgView" />
+        <div class="editBtns">
+          <button class="btnTrash" ion-button color="danger" (click)="removeImage()">
+            Remove
+          </button>
+        </div>
+      </ion-item>
+
+      <button ion-button *ngIf="!isBanner " (click)="uploadImage()">Upload</button>
+
+
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

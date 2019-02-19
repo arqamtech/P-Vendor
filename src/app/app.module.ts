@@ -16,7 +16,7 @@ import { AddProductPage } from '../pages/Inventory/add-product/add-product';
 import { NotVerifiedPage } from '../pages/Extra/not-verified/not-verified';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner'; 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ChangePassPage } from '../pages/Auth/change-pass/change-pass';
 import { NotificationsPage } from '../pages/Notifications/notifications/notifications';
 import { SettingsPage } from '../pages/Extra/settings/settings';
@@ -29,6 +29,7 @@ import { FaqsPage } from '../pages/Help/faqs/faqs';
 import { ViewticketsPage } from '../pages/Help/Tickets/viewtickets/viewtickets';
 import { AddTicketPage } from '../pages/Help/Tickets/add-ticket/add-ticket';
 import { TicketDetailsPage } from '../pages/Help/Tickets/ticket-details/ticket-details';
+import { VendorBannerPage } from '../pages/Extra/vendor-banner/vendor-banner';
 
 export const firebaseCred = {
   apiKey: "AIzaSyDfYGCZchTJHmNBlk4-T4-B24d7qtBs4LQ",
@@ -65,6 +66,7 @@ firebase.initializeApp(firebaseCred);
     ViewticketsPage,
     AddTicketPage,
     TicketDetailsPage,
+    VendorBannerPage,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +99,7 @@ firebase.initializeApp(firebaseCred);
     ViewticketsPage,
     AddTicketPage,
     TicketDetailsPage,
+    VendorBannerPage,
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },
