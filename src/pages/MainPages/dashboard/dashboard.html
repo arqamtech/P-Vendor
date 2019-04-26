@@ -72,8 +72,8 @@
 
             <div *ngIf="dataArray.length">
               <ion-item *ngFor="let p of prods ;let i=index; ">
-                <h3 item-start *ngIf="i<4">{{i+1}}.{{p.Name }}</h3>
-                <h2 item-end ion-text *ngIf="i<4" color="primary">{{p.Sales}}</h2>
+                <h3 item-start *ngIf="i<5">{{i+1}}.{{p.Name }}</h3>
+                <h2 item-end ion-text *ngIf="i<5" color="primary">{{p.Sales}}</h2>
               </ion-item>
             </div>
             <ion-item *ngIf="!dataArray.length">

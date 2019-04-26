@@ -36,7 +36,7 @@ export class AddProductPage {
   //Attributes
   isCols: boolean = false;
   colorsEntered: string = '';
-
+  description: string;
   isSize: boolean = false;
   sizeEntered: string = '';
   bName: string;
@@ -87,6 +87,7 @@ export class AddProductPage {
             Price: this.Price,
             Color: this.colorsEntered,
             Size: this.sizeEntered,
+            Description: this.description,
             TimeStamp: moment().format(),
           }).then((res) => {
             firebase.database().ref("CategoriesWiseProducts").child(this.catSel.key).child(res.key).set("true").then(() => {

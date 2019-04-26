@@ -9,6 +9,7 @@ import { SalesPage } from '../pages/MainPages/sales/sales';
 import { InventoryPage } from '../pages/MainPages/inventory/inventory';
 import { OrdersPage } from '../pages/MainPages/orders/orders';
 import { HelpPage } from '../pages/MainPages/help/help';
+import { AddProductPage } from '../pages/Inventory/add-product/add-product';
 @Component({
   templateUrl: 'app.html'
 })
@@ -46,7 +47,7 @@ export class MyApp {
     this.platform.ready().then(() => {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          this.rootPage = ProfilePage;
+          this.rootPage = AddProductPage;
         }
         else {
           this.rootPage = LoginPage;
