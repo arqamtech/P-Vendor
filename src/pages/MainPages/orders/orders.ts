@@ -12,21 +12,21 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class OrdersPage {
 
-  viewPending : boolean = false;
-  viewCompleted : boolean = false;
+  viewPending: boolean = false;
+  viewCompleted: boolean = false;
 
-  pendingOrders : Array<any>=[];
-  CompletedOrders : Array<any>=[];
+  pendingOrders: Array<any> = [];
+  CompletedOrders: Array<any> = [];
 
-  pendingOrdersRef=this.db.list(`Seller Data/Orders/${firebase.auth().currentUser.uid}/Pending`)
-  CompletedOrdersRef=this.db.list(`Seller Data/Orders/${firebase.auth().currentUser.uid}/Completed`)
+  pendingOrdersRef = this.db.list(`Seller Data/Orders/${firebase.auth().currentUser.uid}/Pending`)
+  CompletedOrdersRef = this.db.list(`Seller Data/Orders/${firebase.auth().currentUser.uid}/Completed`)
 
   constructor(
-  public navCtrl: NavController, 
-  public db :AngularFireDatabase,
-  public loadingCtrl : LoadingController,
-  public popoverCtrl: PopoverController,
-  public navParams: NavParams
+    public navCtrl: NavController,
+    public db: AngularFireDatabase,
+    public loadingCtrl: LoadingController,
+    public popoverCtrl: PopoverController,
+    public navParams: NavParams
   ) {
     this.getPendingOrders();
     this.getCompletedOrders();
@@ -39,20 +39,21 @@ export class OrdersPage {
 
 
 
-  getPendingOrders(){
-    let loading = this.loadingCtrl.create({
-      content: 'Logging In...'
-    });
-    loading.present();
+  getPendingOrders() {
+    // let loading = this.loadingCtrl.create({
+    //   content: 'Logging In...'
+    // });
+    // loading.present();
+    console.log(this.pendingOrders);
 
 
-    this.pendingOrdersRef.snapshotChanges().subscribe(snap=>{
+    this.pendingOrdersRef.snapshotChanges().subscribe(snap => {
       this.pendingOrders = [];
-      snap.forEach(snip=>{
-        this.db.object(`Orders/${snip.key}`).snapshotChanges().subscribe(oSnap=>{
-          let temp : any;
-          let veryTemp : any = oSnap.payload.val();
-          this.db.object(`Products/${veryTemp.ProductKey}`).snapshotChanges().subscribe(pSnap=>{
+      snap.forEach(snip => {
+        this.db.object(`Orders/${snip.key}`).snapshotChanges().subscribe(oSnap => {
+          let temp: any;
+          let veryTemp: any = oSnap.payload.val();
+          this.db.object(`Products/${veryTemp.ProductKey}`).snapshotChanges().subscribe(pSnap => {
             temp = pSnap.payload.val();
             temp.key = pSnap.key;
             temp.Amount = veryTemp.Amount;
@@ -60,9 +61,9 @@ export class OrdersPage {
             temp.Status = veryTemp.Status;
             temp.TimeStamp = veryTemp.TimeStamp;
             this.pendingOrders.push(temp);
-            console.log(temp);
           })
-          loading.dismiss();
+          console.log(this.pendingOrders);
+          // loading.dismiss();
         })
       })
     })
@@ -79,16 +80,16 @@ export class OrdersPage {
 
 
 
-  getCompletedOrders(){
+  getCompletedOrders() {
 
   }
 
 
 
-  toggleCompleted(){
+  toggleCompleted() {
     this.viewCompleted = !this.viewCompleted;
   }
-  togglePending(){
+  togglePending() {
     this.viewPending = !this.viewPending;
   }
 
@@ -98,7 +99,7 @@ export class OrdersPage {
       ev: myEvent
     });
   }
-  gtSettings(){
+  gtSettings() {
     this.navCtrl.push(SettingsPage);
   }
 

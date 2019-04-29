@@ -6,27 +6,28 @@
     <ion-slide>
       <ion-card>
         <ion-card-content>
-          <h1 class="signinTitle">Sign In to Posters Vendor</h1>
+          <img src="assets/imgs/short.png" class="log">
+
+
+          <h1 class="signinTitle">Sign In to ALO Vendor</h1>
 
           <ion-item>
-            <ion-label color="whiter" fixed>Email</ion-label>
-            <ion-input type="email" (keyup.enter)="checkData()"  [(ngModel)]="email" autofocus ></ion-input>
+            <ion-label  fixed>Email</ion-label>
+            <ion-input type="email" (keyup.enter)="checkData()" [(ngModel)]="email" autofocus></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label color="whiter" fixed>Password</ion-label>
-            <ion-input type="password" (keyup.enter)="checkData()"  [(ngModel)]="pass"></ion-input>
+            <ion-label  fixed>Password</ion-label>
+            <ion-input type="password" (keyup.enter)="checkData()" [(ngModel)]="pass"></ion-input>
           </ion-item>
 
-          <button ion-button color="primary"  (click)="checkData()">Login</button> <br/>
+          <button ion-button color="primary" (click)="checkData()">Login</button> <br />
 
 
           <button ion-button clear (click)="gtSignUp()">Not a Vendor ? Sign Up</button>
         </ion-card-content>
 
 
-</ion-card>
-  </ion-slide>
-</ion-slides>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
 </ion-content>
-
-
