@@ -34,8 +34,8 @@ export class InventoryPage {
   }
 
 
-  viewBar(p){
-    this.navCtrl.push(ViewBarCodePage,{product : p});
+  viewBar(p) {
+    this.navCtrl.push(ViewBarCodePage, { product: p });
   }
   getProducts() {
     this.db.list(`Seller Data/Products/${firebase.auth().currentUser.uid}`).snapshotChanges().subscribe(snap => {
@@ -77,7 +77,7 @@ export class InventoryPage {
       ev: myEvent
     });
   }
-  gtSettings(){
+  gtSettings() {
     this.navCtrl.push(SettingsPage);
   }
   addInventory(p) {
@@ -180,7 +180,43 @@ export class InventoryPage {
     this.navCtrl.push(AddProductPage, { product: p })
   }
 
+  confirmFeat(p) {
+    const confirm = this.alertCtrl.create({
+      title: 'Set as Featured Product ?',
+      message: p.Name,
+      buttons: [
+        {
+          text: 'Disagree',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Agree',
+          handler: () => {
+            this.setFeatured(p);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
 
+  setFeatured(p) {
+    firebase.database().ref("Seller Data").child("Sellers").child(p.StoreKey).child("FeaturedProduct").once("value", snap => {
+      firebase.database().ref("Products").child(snap.val()).child("Featured").remove().then(() => {
+        firebase.database().ref("Products").child(p.key).child("Featured").set(true).then(() => {
+          firebase.database().ref("Seller Data").child("Sellers").child(p.StoreKey).child("FeaturedProduct").set(p.key).then(() => {
+            this.getProducts();
+          })
+        })
+      })
+    })
+
+
+
+
+  }
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({
