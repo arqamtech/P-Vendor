@@ -1,49 +1,54 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Notifications</ion-title>
+    <!-- <ion-title>Notifications</ion-title> -->
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-  <ion-card>
+<ion-content>
+  <ion-item no-lines class="content">
+    <h1 class="title">Notifications</h1>
+  </ion-item>
 
-    <ion-grid>
-      <ion-navbar color="primary">
-        <ion-row>
-          <ion-col col-1>
-            <ion-title>S.No</ion-title>
-          </ion-col>
-          <ion-col col-2>
-            <ion-title>Notification</ion-title>
-          </ion-col>
-          <ion-col col-2>
-            <ion-title>Type of Notification</ion-title>
-          </ion-col>
-          <ion-col col-2>
-            <ion-title text-center>Status</ion-title>
-          </ion-col>
-        </ion-row>
-      </ion-navbar>
-    </ion-grid>
-
-
-
-    <ion-grid>
-      <ion-row *ngFor="let n of notis; let i = index;">
-        <ion-col text-center col-1>{{i+1}}</ion-col>
-        <ion-col text-center col-2 ion-text (click)="viewNoti()" color="primary">{{n.Name}}</ion-col>
-        <ion-col text-center col-2>{{n.Type}}</ion-col>
-        <ion-col text-center col-2>{{n.Status}}</ion-col>
-        <ion-col text-center col-2>
-          <button ion-button (click)="maRead(n)" clear
-           >Mark as Read</button>
+  <ion-grid>
+    <ion-navbar color="primary">
+      <ion-row>
+        <ion-col col-md-1 col-12>
+          <ion-title>S.No</ion-title>
+        </ion-col>
+        <ion-col col-md-2 col-12>
+          <ion-title>Notification</ion-title>
+        </ion-col>
+        <ion-col col-md-2 col-12>
+          <ion-title>Type of Notification</ion-title>
+        </ion-col>
+        <ion-col col-md-2 col-12>
+          <ion-title text-center>Status</ion-title>
         </ion-col>
       </ion-row>
-    </ion-grid>
+    </ion-navbar>
+  </ion-grid>
 
 
 
-  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-card *ngFor="let n of notis; let i = index;">
+        <ion-card-content>
+
+          <ion-col text-center col-md-1 col-12>{{i+1}}</ion-col>
+          <ion-col text-center col-md-2 col-12 ion-text (click)="viewNoti()" color="primary">{{n.Name}}</ion-col>
+          <ion-col text-center col-md-2 col-12>{{n.Type}}</ion-col>
+          <ion-col text-center col-md-2 col-12>{{n.Status}}</ion-col>
+          <ion-col text-center col-md-2 col-12>
+            <button ion-button (click)="maRead(n)" clear>Mark as Read</button>
+          </ion-col>
+
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+
 
 </ion-content>

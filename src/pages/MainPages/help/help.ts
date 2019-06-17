@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, PopoverController } from 'ionic-angular';
 import { FaqsPage } from '../../Help/faqs/faqs';
 import { ViewticketsPage } from '../../Help/Tickets/viewtickets/viewtickets';
+import { NotiPopPage } from '../../Notifications/noti-pop/noti-pop';
+import { SettingsPage } from '../../Extra/settings/settings';
 
 
 @IonicPage()
@@ -12,17 +14,32 @@ import { ViewticketsPage } from '../../Help/Tickets/viewtickets/viewtickets';
 export class HelpPage {
 
   constructor(
-  public navCtrl: NavController, 
-  public navParams: NavParams
+    public navCtrl: NavController,
+    public menuCtrl: MenuController,
+    public popoverCtrl: PopoverController,
+    public navParams: NavParams
   ) {
+    this.menuCtrl.enable(true);
   }
 
 
-  gtTickets(){
+  gtNoti(myEvent) {
+    let popover = this.popoverCtrl.create(NotiPopPage);
+    popover.present({
+      ev: myEvent
+    });
+  }
+  gtSettings() {
+    this.navCtrl.push(SettingsPage);
+  }
+
+
+
+  gtTickets() {
     this.navCtrl.push(ViewticketsPage);
   }
 
-  gtFaqs(){
+  gtFaqs() {
     this.navCtrl.push(FaqsPage);
   }
 

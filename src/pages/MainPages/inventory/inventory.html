@@ -18,12 +18,12 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col col-6>
+      <ion-col col-12 col-md-6>
         <ion-item no-lines class="content">
           <h1 class="title">INVENTORY</h1>
         </ion-item>
       </ion-col>
-      <ion-col col-6>
+      <ion-col col-12 col-md-6>
         <ion-searchbar item-end animated="true" placeholder="Search a Product" [(ngModel)]="searchbar"
           (ionInput)="getItems(searchbar)"></ion-searchbar>
       </ion-col>
@@ -37,19 +37,19 @@
   <ion-grid>
     <ion-navbar color="primary">
       <ion-row>
-        <ion-col col-2>
+        <ion-col col-12 col-md-2>
           <ion-title>Product Name</ion-title>
         </ion-col>
-        <ion-col col-2>
+        <ion-col col-12 col-md-2>
           <ion-title>Category</ion-title>
         </ion-col>
-        <ion-col col-1>
+        <ion-col col-12 col-md-1>
           <ion-title>Quantity</ion-title>
         </ion-col>
-        <ion-col col-1>
+        <ion-col col-12 col-md-1>
           <ion-title>Status</ion-title>
         </ion-col>
-        <ion-col col-1>
+        <ion-col col-12 col-md-1>
           <ion-title>Sales</ion-title>
         </ion-col>
       </ion-row>
@@ -57,34 +57,35 @@
   </ion-grid>
 
 
-  <ion-card *ngIf="prods.length">
-    <ion-card-content>
-      <ion-grid>
-        <ion-row text-left *ngFor="let p of prods">
-          <ion-col col-1>
-            <button ion-button clear color="s" *ngIf="!p.Featured && p.Status=='Verified'" icon-only (click)="confirmFeat(p)">
+  <ion-grid *ngIf="prods.length">
+    <ion-card *ngFor="let p of prods">
+      <ion-card-content>
+        <ion-row text-left>
+          <ion-col col-12 col-md-1>
+            <button ion-button clear color="s" *ngIf="!p.Featured && p.Status=='Verified'" icon-only
+              (click)="confirmFeat(p)">
               <ion-icon name="star-outline"></ion-icon>
             </button>
             <button ion-button clear color="s" *ngIf="p.Featured" icon-only>
               <ion-icon name="star"></ion-icon>
             </button>
           </ion-col>
-          <ion-col col-2>
+          <ion-col col-12 col-md-2>
             {{p.Name}}
           </ion-col>
-          <ion-col col-2>
+          <ion-col col-12 col-md-2>
             {{p.Category}}
           </ion-col>
-          <ion-col col-1>
+          <ion-col col-12 col-md-1>
             {{p.Quantity}}
           </ion-col>
-          <ion-col col-1>
+          <ion-col col-12 col-md-1>
             {{p.Status}}
           </ion-col>
-          <ion-col col-1>
+          <ion-col col-12 col-md-1>
             {{p.Sales}}
           </ion-col>
-          <ion-col col-2>
+          <ion-col col-12 col-md-2>
             <a [href]="p.ImageUrl" target="_blank">
               <button ion-button icon-only clear>
                 <ion-icon name="ios-image"></ion-icon>
@@ -97,14 +98,14 @@
               <ion-icon name="md-trash"></ion-icon>
             </button>
           </ion-col>
-          <ion-col col-1>
+          <ion-col col-12 col-md-1>
             <button ion-button clear (click)="addInventory(p)">Add Inventory</button><br />
             <button ion-button clear (click)="viewBar(p)">View Barcode</button>
           </ion-col>
         </ion-row>
-      </ion-grid>
-    </ion-card-content>
-  </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
 
 
 

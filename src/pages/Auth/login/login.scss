@@ -7,12 +7,12 @@ page-login {
     display: none;
   }
   .card {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 50%;
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // -webkit-transform: translate(-50%, -50%);
+    // transform: translate(-50%, -50%);
+    // width: 50%;
     // background-color: rgba(0, 0, 0, 0.8);
   }
 
@@ -23,7 +23,7 @@ page-login {
   }
 
   .signinTitle {
-    color: #fff;
+    // color: #fff;
     font-size: 36px;
     font-weight: 300;
     margin-top: 20px;
@@ -33,9 +33,9 @@ page-login {
     background-color: transparent;
   }
   .input {
-    border: solid 1px;
+    border-bottom: solid 1px;
     border-color: #e71d36;
     color: black;
-    margin: 20px;
+    // margin: 20px;
   }
 }

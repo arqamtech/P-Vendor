@@ -12,32 +12,37 @@
 
 <ion-content padding>
 
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col col-12> -->
 
-  <ion-slides>
-    <ion-slide>
-
-
-      <ion-item class="selects" *ngIf="!img1">
-        <ion-label color="whiter">Select Image</ion-label>
-        <ion-input type="file" (change)="fileChange($event)" accept="image/x-png,image/gif,image/jpeg" id="file-input"
-          style="opacity: 0" #fileInp (ngModel)="file1"></ion-input>
-      </ion-item>
+  <ion-card>
 
 
-
-      <ion-item *ngIf="img1">
-        <img [src]="img1" class="imgView" />
-        <div class="editBtns">
-          <button class="btnTrash" ion-button color="danger" (click)="removeImage()">
-            Remove
-          </button>
-        </div>
-      </ion-item>
-
-      <button ion-button *ngIf="!isBanner " (click)="uploadImage()">Upload</button>
+    <ion-item class="selects" *ngIf="!img1">
+      <ion-label color="whiter">Select Image</ion-label>
+      <ion-input type="file" (change)="fileChange($event)" accept="image/x-png,image/gif,image/jpeg" id="file-input"
+        style="opacity: 0" #fileInp (ngModel)="file1"></ion-input>
+    </ion-item>
 
 
-    </ion-slide>
-  </ion-slides>
+
+    <ion-item *ngIf="img1">
+      <button class="btnTrash" float-right ion-button color="danger" (click)="removeImage()">
+        Remove
+      </button>
+      <img [src]="img1" class="imgView" />
+      <!-- <div class="editBtns"> -->
+      <!-- </div> -->
+    </ion-item>
+
+    <button ion-button *ngIf="!isBanner " (click)="uploadImage()">Upload</button>
+
+
+    <!-- </ion-card-content> -->
+  </ion-card>
+  <!-- </ion-col>
+    </ion-row>
+  </ion-grid> -->
 
 </ion-content>

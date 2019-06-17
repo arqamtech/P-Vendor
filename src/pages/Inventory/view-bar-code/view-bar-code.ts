@@ -17,7 +17,7 @@ export class ViewBarCodePage {
   public navParams: NavParams
   ) {
     this.createdCode = this.product.key;
-    console.log(this.product);
+    // console.log(this.product);
   }
 
 

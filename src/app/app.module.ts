@@ -70,7 +70,9 @@ firebase.initializeApp(firebaseCred);
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      scrollAssist: false
+    }),
     AngularFireModule.initializeApp(firebaseCred),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

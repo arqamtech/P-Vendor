@@ -44,7 +44,7 @@ export class OrdersPage {
     //   content: 'Logging In...'
     // });
     // loading.present();
-    console.log(this.pendingOrders);
+    // console.log(this.pendingOrders);
 
 
     this.pendingOrdersRef.snapshotChanges().subscribe(snap => {
@@ -62,7 +62,7 @@ export class OrdersPage {
             temp.TimeStamp = veryTemp.TimeStamp;
             this.pendingOrders.push(temp);
           })
-          console.log(this.pendingOrders);
+          // console.log(this.pendingOrders);
           // loading.dismiss();
         })
       })
